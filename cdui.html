@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="pageTitle">Projet CDUI — La Manu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cdui.css">
+</head>
+<body class="cd-body">
+
+  <div class="cd-page">
+
+    <header class="cd-nav">
+      <a class="cd-back" href="index.html" data-i18n="navBack">&larr; Portfolio</a>
+      <div class="cd-nav-right">
+        <button class="lang-toggle cd-lang-toggle" id="lang-toggle" type="button" aria-label="Changer de langue">EN</button>
+        <a class="cd-contact-link" href="contact.html" data-i18n="navContact">Contact</a>
+      </div>
+    </header>
+
+    <section class="cd-hero">
+      <p class="cd-eyebrow" data-i18n="heroEyebrow">Vidéo institutionnelle &middot; Montage &middot; Motion design</p>
+      <h1 class="cd-title">Projet CDUI</h1>
+      <p class="cd-subtitle" data-i18n="heroSubtitle">Une journée type à La Manu — École supérieure des métiers du numérique, Amiens</p>
+
+      <div class="cd-video-wrap">
+        <iframe src="https://www.youtube.com/embed/M8lQSsG8-ho" title="Projet CDUI — La Manu"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="cd-video-fallback">
+        <span data-i18n="videoFallbackText">La vidéo ne s'affiche pas&nbsp;?</span>
+        <a href="https://www.youtube.com/watch?v=M8lQSsG8-ho" target="_blank" rel="noopener" data-i18n="videoFallbackLink">Regarder sur YouTube</a>
+      </p>
+    </section>
+
+    <section class="cd-section">
+      <h2 data-i18n="projectHeading">Le projet</h2>
+      <p class="cd-concept" data-i18n="projectText">
+        Projet réalisé à la demande du centre de formation La Manu (École supérieure des métiers
+        du numérique, Amiens)&nbsp;: une vidéo de présentation mettant en scène une journée type au
+        sein de l'école. Montage sur Adobe Premiere Pro, effets et animations sur After Effects.
+      </p>
+    </section>
+
+    <footer class="cd-footer">
+      <a href="index.html" data-i18n="footerBack">&larr; Retour au portfolio</a>
+      <span>Projet CDUI &times; La Manu</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const PAGE_I18N = {
+      fr: {
+        pageTitle: "Projet CDUI — La Manu",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "Vidéo institutionnelle &middot; Montage &middot; Motion design",
+        heroSubtitle: "Une journée type à La Manu — École supérieure des métiers du numérique, Amiens",
+        videoFallbackText: "La vidéo ne s'affiche pas&nbsp;?",
+        videoFallbackLink: "Regarder sur YouTube",
+        projectHeading: "Le projet",
+        projectText: "Projet réalisé à la demande du centre de formation La Manu (École supérieure des métiers du numérique, Amiens)&nbsp;: une vidéo de présentation mettant en scène une journée type au sein de l'école. Montage sur Adobe Premiere Pro, effets et animations sur After Effects.",
+        footerBack: "&larr; Retour au portfolio"
+      },
+      en: {
+        pageTitle: "CDUI Project — La Manu",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "Institutional Video &middot; Editing &middot; Motion Design",
+        heroSubtitle: "A typical day at La Manu — Digital Professions Graduate School, Amiens",
+        videoFallbackText: "Video not showing&nbsp;?",
+        videoFallbackLink: "Watch on YouTube",
+        projectHeading: "The project",
+        projectText: "Project made for the training center La Manu (Digital Professions Graduate School, Amiens)&nbsp;: a presentation video depicting a typical day at the school. Edited in Adobe Premiere Pro, effects and animations in After Effects.",
+        footerBack: "&larr; Back to portfolio"
+      }
+    };
+  </script>
+  <script src="i18n.js"></script>
+  <script src="cdui.js"></script>
+</body>
+</html>

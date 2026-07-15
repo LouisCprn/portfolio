@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="pageTitle">La Veuve Noire — Court métrage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="veuve-noire.css">
+</head>
+<body class="vn-body">
+
+  <div class="vn-page">
+
+    <header class="vn-nav">
+      <a class="vn-back" href="index.html" data-i18n="navBack">&larr; Portfolio</a>
+      <div class="vn-nav-right">
+        <button class="lang-toggle vn-lang-toggle" id="lang-toggle" type="button" aria-label="Changer de langue">EN</button>
+        <a class="vn-contact-link" href="contact.html" data-i18n="navContact">Contact</a>
+      </div>
+    </header>
+
+    <section class="vn-hero">
+      <p class="vn-eyebrow" data-i18n="heroEyebrow">Court métrage &middot; Réalisation &middot; Direction artistique</p>
+      <h1 class="vn-title">La Veuve Noire</h1>
+      <p class="vn-credits" data-i18n="heroCredits">Réalisé par <strong>Louis Capron</strong> &amp; <strong>Flavien Baudoin</strong></p>
+
+      <div class="vn-video-wrap">
+        <iframe src="https://www.youtube.com/embed/DCEg9VeeUBo" title="La Veuve Noire — court métrage"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="vn-video-fallback">
+        <span data-i18n="videoFallbackText">La vidéo ne s'affiche pas&nbsp;?</span>
+        <a href="https://youtu.be/DCEg9VeeUBo" target="_blank" rel="noopener" data-i18n="videoFallbackLink">Regarder sur YouTube</a>
+      </p>
+    </section>
+
+    <section class="vn-section">
+      <h2 data-i18n="conceptHeading">Le concept</h2>
+      <p class="vn-concept" data-i18n="conceptText">
+        Le court métrage explore le péché de la luxure à travers un simple repas. Toute la tension
+        repose sur un jeu de regards intenses entre deux personnages. Pour montrer ce qui se passe
+        dans leur tête, j'utilise des effets visuels qui viennent « contaminer » la réalité,
+        révélant leurs désirs et leurs fantasmes directement à l'écran. C'est un film sur le désir
+        comme une faim qui dévore tout le reste.
+      </p>
+    </section>
+
+    <footer class="vn-footer">
+      <a href="index.html" data-i18n="footerBack">&larr; Retour au portfolio</a>
+      <span>La Veuve Noire &times; Louis Capron</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const PAGE_I18N = {
+      fr: {
+        pageTitle: "La Veuve Noire — Court métrage",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "Court métrage &middot; Réalisation &middot; Direction artistique",
+        heroCredits: "Réalisé par <strong>Louis Capron</strong> &amp; <strong>Flavien Baudoin</strong>",
+        videoFallbackText: "La vidéo ne s'affiche pas&nbsp;?",
+        videoFallbackLink: "Regarder sur YouTube",
+        conceptHeading: "Le concept",
+        conceptText: "Le court métrage explore le péché de la luxure à travers un simple repas. Toute la tension repose sur un jeu de regards intenses entre deux personnages. Pour montrer ce qui se passe dans leur tête, j'utilise des effets visuels qui viennent « contaminer » la réalité, révélant leurs désirs et leurs fantasmes directement à l'écran. C'est un film sur le désir comme une faim qui dévore tout le reste.",
+        footerBack: "&larr; Retour au portfolio"
+      },
+      en: {
+        pageTitle: "La Veuve Noire — Short Film",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "Short Film &middot; Direction &middot; Art Direction",
+        heroCredits: "Directed by <strong>Louis Capron</strong> &amp; <strong>Flavien Baudoin</strong>",
+        videoFallbackText: "Video not showing&nbsp;?",
+        videoFallbackLink: "Watch on YouTube",
+        conceptHeading: "The concept",
+        conceptText: "The short film explores the sin of lust through a simple meal. All the tension rests on an intense exchange of glances between two characters. To show what's happening in their minds, I use visual effects that “contaminate” reality, revealing their desires and fantasies directly on screen. It's a film about desire as a hunger that devours everything else.",
+        footerBack: "&larr; Back to portfolio"
+      }
+    };
+  </script>
+  <script src="i18n.js"></script>
+  <script src="veuve-noire.js"></script>
+</body>
+</html>

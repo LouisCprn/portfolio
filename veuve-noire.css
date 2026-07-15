@@ -1,0 +1,287 @@
+/* =========================================================
+   LA VEUVE NOIRE - court métrage (Louis Capron & Flavien Baudoin)
+   DA propre : noir charbon quasi total, néon jaune (titre),
+   orange vif, bordeaux, rose corail et or (table/bijoux).
+   Ambiance sombre, sensuelle, cinématographique — volontairement
+   très différente de Prizius et du reste du portfolio.
+   ========================================================= */
+
+:root {
+  --vn-bg: #141414;
+  --vn-bg-deep: #0a0a0b;
+  --vn-yellow: #f5e94a;
+  --vn-orange: #e0691a;
+  --vn-burgundy: #5c1a24;
+  --vn-pink: #e98aa0;
+  --vn-gold: #c9a227;
+  --vn-text: #f2f0e8;
+
+  --vn-font-title: 'Yellowtail', cursive;
+  --vn-font-body: 'Montserrat', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body.vn-body {
+  height: auto;
+  overflow: auto;
+  display: block;
+  margin: 0;
+  /* le néon ne se limite plus au hero : un halo ambiant traverse
+     toute la page, fixé au viewport pour rester cohérent au scroll */
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(245,233,74,0.07), transparent 45%),
+    radial-gradient(ellipse at 85% 35%, rgba(224,105,26,0.09), transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(92,26,36,0.18), transparent 55%),
+    var(--vn-bg);
+  background-attachment: fixed;
+  color: var(--vn-text);
+  font-family: var(--vn-font-body);
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn-page * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------------- NAV ---------------- */
+
+.vn-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6vw;
+  /* même halo que le hero, mais centré juste sous le nav : ça amorce
+     la lueur en douceur au lieu d'un fond nu qui s'arrête net pile à
+     la frontière avec le hero (coupure visible sinon). */
+  background: radial-gradient(ellipse at 50% 130%, rgba(224,105,26,0.14), transparent 70%);
+}
+.vn-back, .vn-contact-link {
+  font-family: var(--vn-font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--vn-text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.vn-back:hover, .vn-contact-link:hover {
+  color: var(--vn-yellow);
+  border-color: var(--vn-yellow);
+  text-shadow: 0 0 8px rgba(245,233,74,0.7);
+}
+
+.vn-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.vn-lang-toggle {
+  font-family: var(--vn-font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--vn-text);
+  background: transparent;
+  border: 1.5px solid rgba(242,240,232,0.4);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, text-shadow 0.2s ease;
+}
+.vn-lang-toggle:hover,
+.vn-lang-toggle:focus-visible {
+  color: var(--vn-yellow);
+  border-color: var(--vn-yellow);
+  text-shadow: 0 0 8px rgba(245,233,74,0.7);
+  outline: none;
+}
+
+/* ---------------- HERO ---------------- */
+
+.vn-hero {
+  padding: 40px 6vw 90px;
+  text-align: center;
+  /* pas de couleur pleine ici : seulement un halo supplémentaire,
+     posé sur le fond ambiant fixe du body (voir html/body) -> plus
+     de bande/coupure visible à la frontière avec la section suivante */
+  background: radial-gradient(ellipse at 50% 20%, rgba(224,105,26,0.16), transparent 65%);
+}
+
+.vn-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--vn-orange);
+  margin: 0 0 18px;
+}
+
+.vn-title {
+  font-family: var(--vn-font-title);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 1;
+  margin: 0 0 22px;
+  color: var(--vn-yellow);
+  text-shadow:
+    0 0 10px rgba(245,233,74,0.85),
+    0 0 24px rgba(245,233,74,0.55),
+    0 0 55px rgba(245,233,74,0.35);
+}
+
+.vn-credits {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(242,240,232,0.8);
+  margin: 0 0 50px;
+}
+.vn-credits strong { color: var(--vn-text); }
+
+.vn-hero-art { max-width: 780px; margin: 0 auto; }
+
+/* ---------------- PLACEHOLDERS (visuels à venir) ---------------- */
+
+.vn-placeholder-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1.5px dashed rgba(245,233,74,0.3);
+  border-radius: 10px;
+  background: rgba(245,233,74,0.03);
+  box-shadow: 0 0 20px rgba(245,233,74,0.08);
+}
+.vn-placeholder-label {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: rgba(242,240,232,0.5);
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.vn-section {
+  padding: 70px 6vw;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.vn-section-alt { max-width: 900px; }
+
+.vn-section h2 {
+  font-family: var(--vn-font-body);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--vn-orange);
+  margin: 0 0 26px;
+  text-align: center;
+  text-shadow: 0 0 14px rgba(224,105,26,0.55), 0 0 30px rgba(224,105,26,0.25);
+}
+
+.vn-concept {
+  font-size: 1.05rem;
+  color: rgba(242,240,232,0.9);
+  text-align: center;
+}
+
+.vn-video-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(245,233,74,0.3);
+  box-shadow: 0 0 16px rgba(245,233,74,0.2), 0 0 45px rgba(245,233,74,0.1), 0 20px 50px rgba(0,0,0,0.5);
+}
+.vn-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.vn-video-placeholder .vn-placeholder-box {
+  aspect-ratio: auto;
+  width: 100%;
+  height: 100%;
+}
+.vn-video-placeholder .vn-placeholder-label {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.vn-video-fallback {
+  max-width: 780px;
+  margin: 16px auto 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(242,240,232,0.6);
+}
+.vn-video-fallback a {
+  color: var(--vn-yellow);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.vn-video-fallback a:hover {
+  text-shadow: 0 0 8px rgba(245,233,74,0.7);
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.vn-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 6vw 40px;
+  font-size: 0.85rem;
+  color: rgba(242,240,232,0.6);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.vn-footer a { color: var(--vn-yellow); text-decoration: none; }
+.vn-footer a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 8px rgba(245,233,74,0.7);
+}
+
+/* ---------------- REVEAL AU SCROLL ---------------- */
+
+.vn-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.vn-reveal.vn-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------- TRANSITION DE SORTIE (retour au portfolio) ---------------- */
+
+.vn-exit-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 0;
+}
+.vn-page {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+}
+.vn-page-exiting {
+  transform: scale(0.06);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vn-exit-backdrop { display: none; }
+}

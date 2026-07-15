@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="pageTitle">École Notre Dame — Conception d'un site internet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="notre-dame-albert.css">
+</head>
+<body class="nda-body">
+
+  <div class="nda-page">
+
+    <header class="nda-nav">
+      <a class="nda-back" href="index.html" data-i18n="navBack">&larr; Portfolio</a>
+      <div class="nda-nav-right">
+        <button class="lang-toggle nda-lang-toggle" id="lang-toggle" type="button" aria-label="Changer de langue">EN</button>
+        <a class="nda-contact-link" href="contact.html" data-i18n="navContact">Contact</a>
+      </div>
+    </header>
+
+    <section class="nda-hero">
+      <div class="nda-hero-text">
+        <p class="nda-eyebrow" data-i18n="heroEyebrow">Design UI &amp; UX &middot; Refonte de site web</p>
+        <h1>École Notre Dame<br>d'Albert</h1>
+        <p class="nda-lead" data-i18n="heroLead">Une école fondée en 1900 à Albert (Somme). Le projet consistait à
+          refondre sa direction artistique et à concevoir un site vitrine complet, avec un espace
+          dédié à la publication d'articles pour l'établissement.</p>
+        <div class="nda-cta-row">
+          <a class="nda-btn nda-btn-primary" href="https://notredamealbert.fr/" target="_blank" rel="noopener" data-i18n="heroCta">Voir le site en ligne</a>
+        </div>
+      </div>
+
+      <div class="nda-hero-art">
+        <img class="nda-hero-logo" src="images/nda-logo-v2.png" alt="Logo École Notre Dame" data-i18n-attr="alt:heroLogoAlt">
+      </div>
+    </section>
+
+    <section class="nda-section">
+      <h2 data-i18n="projectHeading">Le projet</h2>
+      <div class="nda-cols">
+        <div class="nda-card">
+          <h3 data-i18n="card1Title">Le contexte</h3>
+          <p data-i18n="card1Text">École Notre Dame, à Albert &mdash; fondée en 1900. Le site précédent ne reflétait plus
+            l'identité de l'établissement et manquait d'un véritable espace d'actualités pour
+            communiquer avec les familles.</p>
+        </div>
+        <div class="nda-card">
+          <h3 data-i18n="card2Title">La mission</h3>
+          <p data-i18n="card2Text">Refonte complète de la direction artistique et création d'un site sur-mesure, pensé
+            mobile first, avec une page dédiée à la publication d'articles. Projet mené sur 2 mois.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="nda-section nda-section-tint">
+      <h2 data-i18n="paletteHeading">Palette de couleurs</h2>
+      <p class="nda-palette-note" data-i18n="paletteNote">Une palette de bleus, associée à la confiance et à la sérénité —
+        des valeurs importantes pour une école aux yeux des élèves comme des parents.</p>
+      <div class="nda-palette">
+        <div class="nda-swatch" style="background:#3D6A98;">
+          <span>#3D6A98</span>
+        </div>
+        <div class="nda-swatch" style="background:#294766;">
+          <span>#294766</span>
+        </div>
+        <div class="nda-swatch" style="background:#3AA6A3;">
+          <span>#3AA6A3</span>
+        </div>
+        <div class="nda-swatch nda-swatch-light" style="background:#FFFFFF;">
+          <span>#FFFFFF</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="nda-section">
+      <h2 data-i18n="typoHeading">Typographie</h2>
+      <p class="nda-palette-note" data-i18n="typoNote">Montserrat, pour un ton moderne correspondant à la refonte de
+        direction artistique voulue par l'école.</p>
+      <div class="nda-type-specimen">
+        <div class="nda-type-sample">
+          <span class="nda-type-aa" style="font-weight:700;">Aa</span>
+          <span class="nda-type-label">Montserrat &middot; Bold</span>
+        </div>
+        <div class="nda-type-sample">
+          <span class="nda-type-aa" style="font-weight:400;">Aa</span>
+          <span class="nda-type-label" data-i18n="typoRegularLabel">Montserrat &middot; Regular</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="nda-section nda-section-tint">
+      <h2 data-i18n="uxHeading">Expérience utilisateur</h2>
+      <p class="nda-palette-note" data-i18n="uxNote">Un parcours pensé simple&nbsp;: depuis l'accueil, l'utilisateur
+        accède directement aux articles publiés par l'école.</p>
+      <div class="nda-flow">
+        <div class="nda-flow-node nda-flow-home" data-i18n="flowHome">Page<br>Accueil</div>
+        <div class="nda-flow-arrow">&rarr;</div>
+        <div class="nda-flow-node nda-flow-article" data-i18n="flowArticle">Page<br>Article</div>
+        <div class="nda-flow-arrow">&rarr;</div>
+        <div class="nda-flow-group">
+          <div class="nda-flow-node nda-flow-sub">Article 1</div>
+          <div class="nda-flow-node nda-flow-sub">Article 2</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nda-section">
+      <h2 data-i18n="toolsHeading">Outils</h2>
+      <div class="nda-tools">
+        <span class="nda-tool">Adobe XD</span>
+        <span class="nda-tool">Photoshop</span>
+        <span class="nda-tool">Illustrator</span>
+        <span class="nda-tool">WordPress</span>
+        <span class="nda-tool">Divi</span>
+        <span class="nda-tool">Local</span>
+      </div>
+    </section>
+
+    <footer class="nda-footer">
+      <a href="index.html" data-i18n="footerBack">&larr; Retour au portfolio</a>
+      <span>École Notre Dame &times; Louis Capron</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const PAGE_I18N = {
+      fr: {
+        pageTitle: "École Notre Dame — Conception d'un site internet",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "Design UI &amp; UX &middot; Refonte de site web",
+        heroLead: "Une école fondée en 1900 à Albert (Somme). Le projet consistait à refondre sa direction artistique et à concevoir un site vitrine complet, avec un espace dédié à la publication d'articles pour l'établissement.",
+        heroCta: "Voir le site en ligne",
+        heroLogoAlt: "Logo École Notre Dame",
+        projectHeading: "Le projet",
+        card1Title: "Le contexte",
+        card1Text: "École Notre Dame, à Albert &mdash; fondée en 1900. Le site précédent ne reflétait plus l'identité de l'établissement et manquait d'un véritable espace d'actualités pour communiquer avec les familles.",
+        card2Title: "La mission",
+        card2Text: "Refonte complète de la direction artistique et création d'un site sur-mesure, pensé mobile first, avec une page dédiée à la publication d'articles. Projet mené sur 2 mois.",
+        paletteHeading: "Palette de couleurs",
+        paletteNote: "Une palette de bleus, associée à la confiance et à la sérénité — des valeurs importantes pour une école aux yeux des élèves comme des parents.",
+        typoHeading: "Typographie",
+        typoNote: "Montserrat, pour un ton moderne correspondant à la refonte de direction artistique voulue par l'école.",
+        typoRegularLabel: "Montserrat &middot; Regular",
+        uxHeading: "Expérience utilisateur",
+        uxNote: "Un parcours pensé simple&nbsp;: depuis l'accueil, l'utilisateur accède directement aux articles publiés par l'école.",
+        flowHome: "Page<br>Accueil",
+        flowArticle: "Page<br>Article",
+        toolsHeading: "Outils",
+        footerBack: "&larr; Retour au portfolio"
+      },
+      en: {
+        pageTitle: "École Notre Dame — Website Design",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "UI &amp; UX Design &middot; Website Redesign",
+        heroLead: "A school founded in 1900 in Albert (Somme, France). The project involved reworking its art direction and designing a complete showcase website, with a dedicated space for publishing articles for the school.",
+        heroCta: "View the live site",
+        heroLogoAlt: "École Notre Dame logo",
+        projectHeading: "The project",
+        card1Title: "The context",
+        card1Text: "École Notre Dame, in Albert &mdash; founded in 1900. The previous site no longer reflected the school's identity and lacked a real news section to communicate with families.",
+        card2Title: "The mission",
+        card2Text: "Complete redesign of the art direction and creation of a bespoke, mobile-first website, with a page dedicated to publishing articles. Project carried out over 2 months.",
+        paletteHeading: "Colour palette",
+        paletteNote: "A palette of blues, associated with trust and serenity — important values for a school in the eyes of both students and parents.",
+        typoHeading: "Typography",
+        typoNote: "Montserrat, for a modern tone matching the art direction redesign the school wanted.",
+        typoRegularLabel: "Montserrat &middot; Regular",
+        uxHeading: "User experience",
+        uxNote: "A deliberately simple journey&nbsp;: from the homepage, the user goes straight to the articles published by the school.",
+        flowHome: "Home<br>Page",
+        flowArticle: "Article<br>Page",
+        toolsHeading: "Tools",
+        footerBack: "&larr; Back to portfolio"
+      }
+    };
+  </script>
+  <script src="i18n.js"></script>
+  <script src="notre-dame-albert.js"></script>
+</body>
+</html>

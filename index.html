@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème">
+    <span class="theme-icon-dark">&#9789;</span>
+    <span class="theme-icon-light">&#9788;</span>
+  </button>
+
+  <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Changer de langue">EN</button>
+
+  <header class="site-header">
+    <div class="name-block">
+      <h1 class="name" id="site-name">Nom Prénom</h1>
+      <hr class="divider">
+    </div>
+  </header>
+
+  <div class="board-wrapper" id="board-wrapper">
+    <main class="board" id="board"></main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="data.js"></script>
+  <script>
+    const PAGE_I18N = {
+      fr: {
+        toastMissingLink: 'Ajoute le lien de "{title}" dans data.js'
+      },
+      en: {
+        toastMissingLink: 'Add the link for "{title}" in data.js'
+      }
+    };
+  </script>
+  <script src="i18n.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

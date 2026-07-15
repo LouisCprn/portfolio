@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="pageTitle">Contact — Louis Capron</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="contact.css">
+</head>
+<body class="contact-body">
+
+  <div class="contact-page">
+
+    <a class="contact-back" href="index.html" data-i18n="backLink">&larr; Portfolio</a>
+    <button class="lang-toggle contact-lang-toggle" id="lang-toggle" type="button" aria-label="Changer de langue">EN</button>
+
+    <main class="contact-wrap">
+      <h1 class="contact-title" data-i18n="title">Contact</h1>
+      <p class="contact-lead" data-i18n="lead">Une question, un projet, une envie de collaborer&nbsp;? Écris-moi.</p>
+
+      <div class="contact-grid">
+        <section class="contact-direct">
+          <h2 data-i18n="coordHeading">Coordonnées</h2>
+          <a class="contact-link" href="mailto:cprnlouis@gmail.com">cprnlouis@gmail.com</a>
+          <div class="contact-socials">
+            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="#" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </section>
+
+        <form class="contact-form" id="contact-form">
+          <h2 data-i18n="formHeading">Message direct</h2>
+          <label>
+            <span data-i18n="labelName">Nom</span>
+            <input type="text" name="name" required>
+          </label>
+          <label>
+            <span data-i18n="labelEmail">Email</span>
+            <input type="email" name="email" required>
+          </label>
+          <label>
+            <span data-i18n="labelMessage">Message</span>
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button type="submit" data-i18n="submitBtn">Envoyer</button>
+        </form>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    const PAGE_I18N = {
+      fr: {
+        pageTitle: "Contact — Louis Capron",
+        backLink: "&larr; Portfolio",
+        title: "Contact",
+        lead: "Une question, un projet, une envie de collaborer&nbsp;? Écris-moi.",
+        coordHeading: "Coordonnées",
+        formHeading: "Message direct",
+        labelName: "Nom",
+        labelEmail: "Email",
+        labelMessage: "Message",
+        submitBtn: "Envoyer"
+      },
+      en: {
+        pageTitle: "Contact — Louis Capron",
+        backLink: "&larr; Portfolio",
+        title: "Contact",
+        lead: "A question, a project, want to collaborate&nbsp;? Get in touch.",
+        coordHeading: "Contact details",
+        formHeading: "Direct message",
+        labelName: "Name",
+        labelEmail: "Email",
+        labelMessage: "Message",
+        submitBtn: "Send"
+      }
+    };
+  </script>
+  <script src="i18n.js"></script>
+  <script src="contact.js"></script>
+</body>
+</html>

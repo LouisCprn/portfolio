@@ -1,0 +1,318 @@
+/* =========================================================
+   PORTFOLIO - damier plein écran, dalles rectangulaires
+   Palette : noir dominant / vert / orange (accent, discret).
+   Aucun coin arrondi sur la page principale.
+   ========================================================= */
+
+:root {
+  --bg: #000000;
+  --tile-bg: #000000;
+  --line: rgba(255, 255, 255, 0.85);
+
+  --green: #35d489;
+  --orange: #ff7a33;
+  --hover-accent: var(--green);
+
+  --text: #f1f4f1;
+
+  --font-head: 'Space Grotesk', sans-serif;
+}
+
+/* Thème clair : fond blanc plein, contours et barre en noir,
+   accent au survol des dalles en orange (au lieu du vert). */
+body.light-theme {
+  --bg: #ffffff;
+  --tile-bg: #ffffff;
+  --line: #000000;
+  --hover-accent: var(--orange);
+  --text: #000000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+* { box-sizing: border-box; border-radius: 0 !important; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-head);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------- BOUTON THEME ---------------- */
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tile-bg);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--hover-accent);
+  color: var(--hover-accent);
+  transform: translateY(-2px);
+  outline: none;
+}
+.theme-toggle .theme-icon-light { display: none; }
+.theme-toggle .theme-icon-dark { display: block; }
+body.light-theme .theme-toggle .theme-icon-light { display: block; }
+body.light-theme .theme-toggle .theme-icon-dark { display: none; }
+
+/* bouton de langue : même style que le bouton de thème,
+   positionné à l'opposé (coin haut-gauche) */
+.lang-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 20;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tile-bg);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.lang-toggle:hover,
+.lang-toggle:focus-visible {
+  border-color: var(--hover-accent);
+  color: var(--hover-accent);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* ---------------- HEADER ---------------- */
+
+.site-header {
+  padding-top: 20px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* La ligne doit juste dépasser un peu le nom, pas toute la page :
+   ce bloc se dimensionne sur son contenu (le nom), et la ligne
+   à l'intérieur prend 100% de cette largeur -> toujours alignée,
+   sans aucun calcul JS. */
+.name-block {
+  width: fit-content;
+  padding: 0 20px;
+  margin-bottom: 50px;
+}
+.name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: clamp(1.6rem, 3.2vw, 2.5rem);
+  margin: 0;
+  text-align: center;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.divider {
+  border: none;
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  margin: 20px 0 0;
+}
+
+/* ---------------- DAMIER ---------------- */
+
+.board-wrapper {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: visible;
+}
+
+.board {
+  flex: 1;
+  position: relative;
+}
+
+.cell {
+  --lift: 0;
+  --glow: 0;
+  position: absolute;
+  background: var(--tile-bg);
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transform: translateY(calc(var(--lift) * -42px)) scale(calc(1 + var(--lift) * 0.08));
+  border-color: color-mix(in srgb, var(--hover-accent) calc(var(--glow) * 100%), var(--line));
+  box-shadow: 0 0 calc(var(--glow) * 18px) calc(var(--glow) * 3px) var(--hover-accent);
+  transition: transform 0.12s ease-out, border-color 0.08s linear, box-shadow 0.08s linear;
+  will-change: transform;
+}
+
+/* dalle "miniature" : l'image remplit toute la surface, comme une
+   vignette YouTube, sans icône ni nom superposés */
+.cell-thumbnail {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cell-visual {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+.cell-visual svg { width: 100%; height: 100%; }
+.cell-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.cell-project:hover .cell-visual,
+.cell-project:focus-visible .cell-visual {
+  transform: scale(1.1);
+}
+
+.cell-monogram {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.cell-project {
+  cursor: pointer;
+}
+.cell-project:focus-visible {
+  border-color: var(--hover-accent);
+  box-shadow: 0 0 4px 0.5px var(--hover-accent);
+  outline: 1px solid var(--hover-accent);
+  outline-offset: -3px;
+}
+
+.cell-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(0.75rem, 1.3vw, 1.05rem);
+  text-align: center;
+  padding: 0 10px;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+.cell-project:hover .cell-name,
+.cell-project:focus-visible .cell-name {
+  color: var(--hover-accent);
+}
+
+/* ---------------- TRANSITION D'OUVERTURE (zoom dans la dalle) ---------------- */
+
+.zoom-overlay {
+  position: fixed;
+  z-index: 999;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--tile-bg);
+  border: 1px solid var(--line);
+  pointer-events: none;
+  transition: top 0.5s cubic-bezier(0.65, 0, 0.35, 1),
+              left 0.5s cubic-bezier(0.65, 0, 0.35, 1),
+              width 0.5s cubic-bezier(0.65, 0, 0.35, 1),
+              height 0.5s cubic-bezier(0.65, 0, 0.35, 1),
+              background-color 0.5s ease,
+              border-color 0.3s ease;
+}
+.zoom-overlay.zoom-overlay-active {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: var(--accent, var(--tile-bg));
+  border-color: transparent;
+}
+.zoom-overlay .cell-visual,
+.zoom-overlay .cell-name {
+  transition: opacity 0.25s ease, transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.zoom-overlay.zoom-overlay-active .cell-name {
+  opacity: 0;
+}
+.zoom-overlay.zoom-overlay-active .cell-visual {
+  transform: scale(2.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zoom-overlay { display: none; }
+}
+
+/* ---------------- TOAST ---------------- */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translate(-50%, 16px);
+  background: var(--tile-bg);
+  border: 1px solid var(--hover-accent);
+  color: var(--text);
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  padding: 12px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+.toast.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

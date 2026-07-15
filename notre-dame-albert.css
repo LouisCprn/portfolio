@@ -1,0 +1,370 @@
+/* =========================================================
+   ÉCOLE NOTRE DAME D'ALBERT - page reprenant la vraie DA du
+   projet (Behance) : bleus institutionnels + blanc, Montserrat.
+   Ton clair, propre, "établissement scolaire" — volontairement
+   différent du reste du portfolio (chaque projet a sa propre DA).
+   ========================================================= */
+
+:root {
+  --nda-blue: #3D6A98;
+  --nda-blue-deep: #294766;
+  --nda-teal: #3AA6A3;
+  --nda-white: #FFFFFF;
+  --nda-bg-tint: #F4F7FA;
+  --nda-text: #24333F;
+
+  --font-head: 'Montserrat', sans-serif;
+
+  --radius: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--nda-white);
+  color: var(--nda-text);
+  font-family: var(--font-head);
+  line-height: 1.55;
+}
+
+.nda-page { overflow-x: hidden; }
+
+/* ---------------- NAV ---------------- */
+
+.nda-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6vw;
+}
+.nda-back {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--nda-blue-deep);
+  text-decoration: none;
+}
+.nda-back:hover { text-decoration: underline; }
+
+.nda-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nda-lang-toggle {
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--nda-blue-deep);
+  background: transparent;
+  border: 1.5px solid rgba(41,71,102,0.35);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.nda-lang-toggle:hover,
+.nda-lang-toggle:focus-visible {
+  color: var(--nda-teal);
+  border-color: var(--nda-teal);
+  outline: none;
+}
+
+.nda-contact-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--nda-blue-deep);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.nda-contact-link:hover {
+  color: var(--nda-teal);
+  border-color: var(--nda-teal);
+}
+
+/* ---------------- HERO ---------------- */
+
+.nda-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 6vw 90px;
+  flex-wrap: wrap;
+}
+.nda-hero-text { max-width: 560px; }
+.nda-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--nda-teal);
+  margin: 0 0 14px;
+}
+.nda-hero h1 {
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--nda-blue-deep);
+  margin: 0 0 20px;
+}
+.nda-lead {
+  font-size: 1.05rem;
+  color: rgba(36,51,63,0.8);
+  margin: 0 0 32px;
+  max-width: 46ch;
+}
+
+.nda-cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.nda-btn {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 999px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.nda-btn-primary {
+  background: var(--nda-blue);
+  color: var(--nda-white);
+  box-shadow: 0 6px 18px rgba(61,106,152,0.35);
+}
+.nda-btn:hover { transform: translateY(-3px); }
+
+.nda-hero-art { flex-shrink: 0; }
+.nda-hero-logo {
+  width: 260px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ---------------- SECTIONS GENERIQUES ---------------- */
+
+.nda-section { padding: 64px 6vw; }
+.nda-section-tint { background: var(--nda-bg-tint); }
+.nda-section h2 {
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  color: var(--nda-blue-deep);
+  margin: 0 0 28px;
+  text-align: center;
+}
+
+.nda-cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.nda-card {
+  background: var(--nda-white);
+  border: 1px solid rgba(41,71,102,0.12);
+  border-radius: var(--radius);
+  padding: 28px 30px;
+  box-shadow: 0 10px 26px rgba(41,71,102,0.06);
+}
+.nda-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--nda-blue);
+  margin: 0 0 10px;
+}
+.nda-card p { margin: 0; font-size: 0.98rem; }
+
+/* ---------------- PALETTE ---------------- */
+
+.nda-palette-note {
+  max-width: 620px;
+  margin: 0 auto 36px;
+  text-align: center;
+  font-size: 0.98rem;
+  color: rgba(36,51,63,0.75);
+}
+.nda-palette {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.nda-swatch {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+  box-shadow: 0 10px 24px rgba(41,71,102,0.15);
+}
+.nda-swatch span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0,0,0,0.2);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.nda-swatch-light {
+  border: 1px solid rgba(41,71,102,0.15);
+}
+.nda-swatch-light span { color: var(--nda-blue-deep); background: rgba(41,71,102,0.08); }
+
+/* ---------------- TYPOGRAPHIE ---------------- */
+
+.nda-type-specimen {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.nda-type-sample {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.nda-type-aa {
+  font-size: 3.4rem;
+  color: var(--nda-blue-deep);
+  line-height: 1;
+}
+.nda-type-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(36,51,63,0.6);
+}
+
+/* ---------------- FLOW UX ---------------- */
+
+.nda-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.nda-flow-node {
+  background: var(--nda-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  box-shadow: 0 10px 24px rgba(61,106,152,0.25);
+}
+.nda-flow-home {
+  border-radius: var(--radius);
+  background: var(--nda-blue-deep);
+}
+.nda-flow-sub {
+  background: var(--nda-teal);
+  width: 90px;
+  height: 90px;
+  font-size: 0.8rem;
+}
+.nda-flow-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.nda-flow-arrow {
+  font-size: 1.6rem;
+  color: var(--nda-blue-deep);
+  opacity: 0.5;
+}
+
+/* ---------------- OUTILS ---------------- */
+
+.nda-tools {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.nda-tool {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nda-blue-deep);
+  background: var(--nda-bg-tint);
+  border: 1px solid rgba(41,71,102,0.15);
+  padding: 8px 18px;
+  border-radius: 999px;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.nda-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 6vw 40px;
+  font-size: 0.85rem;
+  color: rgba(36,51,63,0.6);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.nda-footer a { color: var(--nda-blue); text-decoration: none; }
+.nda-footer a:hover { text-decoration: underline; }
+
+/* ---------------- REVEAL AU SCROLL ---------------- */
+
+.nda-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.nda-reveal.nda-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------- TRANSITION DE SORTIE (retour au portfolio) ---------------- */
+
+.nda-exit-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 0;
+}
+.nda-page {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+  transform-origin: center center;
+}
+.nda-page-exiting {
+  transform: scale(0.06);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nda-exit-backdrop { display: none; }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+
+@media (max-width: 640px) {
+  .nda-hero { padding: 30px 6vw 50px; }
+  .nda-hero-logo { width: 180px; }
+  .nda-flow { gap: 10px; }
+}

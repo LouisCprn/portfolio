@@ -1,0 +1,332 @@
+/* =========================================================
+   TU CONNAIS ? - podcast pop culture (anecdotes & fun facts)
+   DA reprise du logo : noir quasi total, orange vif en accent,
+   typographie condensée impactante façon badge/pastille de
+   podcast. Sobre et sombre, avec juste l'orange qui claque.
+   ========================================================= */
+
+:root {
+  --tc-bg: #121212;
+  --tc-bg-deep: #0a0a0a;
+  --tc-accent: #e2661d;
+  --tc-accent-soft: rgba(226,102,29,0.16);
+  --tc-white: #f5f3ee;
+  --tc-text: rgba(245,243,238,0.85);
+
+  --tc-font-title: 'Anton', sans-serif;
+  --tc-font-body: 'Poppins', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body.tc-body {
+  height: auto;
+  overflow: auto;
+  display: block;
+  margin: 0;
+  /* un seul fond, fixe, partagé par toute la page : pas de dégradé
+     local par section -> pas de coupure de couleur au scroll
+     (leçon tirée des pages Prizius / La Veuve Noire). */
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(226,102,29,0.12), transparent 45%),
+    radial-gradient(ellipse at 85% 60%, rgba(226,102,29,0.07), transparent 50%),
+    var(--tc-bg);
+  background-attachment: fixed;
+  color: var(--tc-text);
+  font-family: var(--tc-font-body);
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-page * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------------- NAV ---------------- */
+
+.tc-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6vw;
+}
+.tc-back, .tc-contact-link {
+  font-family: var(--tc-font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--tc-white);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tc-back:hover, .tc-contact-link:hover {
+  color: var(--tc-accent);
+  border-color: var(--tc-accent);
+}
+
+.tc-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.tc-lang-toggle {
+  font-family: var(--tc-font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--tc-white);
+  background: transparent;
+  border: 1.5px solid rgba(245,243,238,0.35);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tc-lang-toggle:hover,
+.tc-lang-toggle:focus-visible {
+  color: var(--tc-accent);
+  border-color: var(--tc-accent);
+  outline: none;
+}
+
+/* ---------------- HERO ---------------- */
+
+.tc-hero {
+  padding: 40px 6vw 45px;
+  text-align: center;
+}
+
+.tc-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--tc-accent);
+  margin: 0 0 18px;
+}
+
+.tc-logo-wrap {
+  margin: 0 0 24px;
+}
+.tc-logo {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.35));
+  animation: tc-logo-bounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes tc-logo-bounce {
+  0%   { transform: rotate(-5deg) scale(0.3); opacity: 0; }
+  60%  { transform: rotate(-5deg) scale(1.08); opacity: 1; }
+  80%  { transform: rotate(-5deg) scale(0.96); }
+  100% { transform: rotate(-5deg) scale(1); }
+}
+
+.tc-lead {
+  max-width: 640px;
+  margin: 0 auto 30px;
+  font-size: 1.05rem;
+  color: rgba(245,243,238,0.85);
+}
+
+.tc-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(245,243,238,0.7);
+  margin: 0 0 34px;
+}
+.tc-rating strong { color: var(--tc-white); }
+
+.tc-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tc-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: rgba(245,243,238,0.08);
+  border: 1.5px solid rgba(245,243,238,0.25);
+  color: var(--tc-white);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tc-icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+.tc-icon-btn:hover,
+.tc-icon-btn:focus-visible {
+  transform: translateY(-2px);
+  background: var(--tc-accent);
+  border-color: var(--tc-accent);
+  box-shadow: 0 10px 26px rgba(226,102,29,0.35);
+  outline: none;
+}
+
+.tc-btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 999px;
+  font-family: var(--tc-font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.tc-btn-primary {
+  background: var(--tc-accent);
+  color: var(--tc-white);
+  box-shadow: 0 10px 30px rgba(226,102,29,0.3);
+}
+.tc-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(226,102,29,0.45);
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.tc-section {
+  padding: 35px 6vw 60px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.tc-section h2 {
+  font-family: var(--tc-font-title);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: var(--tc-white);
+  margin: 0 0 30px;
+  text-align: center;
+}
+
+.tc-concept {
+  font-size: 1.05rem;
+  color: rgba(245,243,238,0.85);
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* ---------------- EPISODES ---------------- */
+
+/* section un peu plus large que les autres, pour laisser respirer
+   les 2 colonnes d'épisodes sur ordinateur */
+.tc-section-episodes {
+  max-width: 1060px;
+}
+
+.tc-episodes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 760px) {
+  .tc-episodes {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+  }
+}
+
+.tc-episode {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 6px 18px;
+  padding: 18px 22px;
+  background: rgba(245,243,238,0.03);
+  border: 1px solid rgba(245,243,238,0.08);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.tc-episode:hover {
+  border-color: var(--tc-accent);
+  background: var(--tc-accent-soft);
+}
+.tc-episode-num {
+  font-family: var(--tc-font-title);
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--tc-accent);
+  grid-row: 1 / 3;
+}
+.tc-episode-title {
+  font-weight: 700;
+  color: var(--tc-white);
+  font-size: 1rem;
+}
+.tc-episode-meta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(245,243,238,0.5);
+  white-space: nowrap;
+}
+.tc-episode-text {
+  grid-column: 2 / 4;
+  font-size: 0.88rem;
+  color: rgba(245,243,238,0.65);
+  margin: 2px 0 0;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.tc-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 6vw 40px;
+  font-size: 0.85rem;
+  color: rgba(245,243,238,0.55);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.tc-footer a { color: var(--tc-white); text-decoration: none; }
+.tc-footer a:hover { color: var(--tc-accent); text-decoration: underline; }
+
+/* ---------------- REVEAL AU SCROLL ---------------- */
+
+.tc-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.tc-reveal.tc-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------- TRANSITION DE SORTIE (retour au portfolio) ---------------- */
+
+.tc-exit-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #000000;
+  z-index: 0;
+}
+.tc-page {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+}
+.tc-page-exiting {
+  transform: scale(0.06);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tc-exit-backdrop { display: none; }
+}
