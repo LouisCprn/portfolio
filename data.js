@@ -52,5 +52,25 @@ const PROJECTS = [
     link: "tu-connais.html",
     accent: "#e2661d",
     thumbnail: "images/Miniature Tu Connais.png"
+  },
+  {
+    title: "Check Up Hiver",
+    link: "check-up-hiver.html",
+    accent: "#c8102e",
+    /* logo officiel Case IH (fond sombre déjà inclus dans l'image,
+       recadré serré) : affiché large et centré, sans effet de zoom
+       excessif ni pixellisation. */
+    thumbnail: "images/caseih_logo.webp",
+    thumbnailSize: "66%"
+  },
+  {
+    title: "New Holland",
+    link: "#", // page désactivée pour le moment (repasser à "diag-expert.html" pour la réactiver)
+    comingSoon: true, // affiche "Prochainement" au clic plutôt que le message de dev générique
+    accent: "#ffc629",
+    /* logo officiel New Holland (fond sombre déjà inclus dans
+       l'image, recadré serré) : même traitement que Case IH. */
+    thumbnail: "images/newholland_logo_tile.webp",
+    thumbnailSize: "66%"
   }
 ];

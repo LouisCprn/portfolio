@@ -1,0 +1,247 @@
+/* =========================================================
+   CHECK UP HIVER - campagne Pièces & Après-vente Case IH
+   DA reprise des visuels fournis : rouge Case IH vif, noir,
+   blanc, bandeaux diagonaux, badge "CHECK UP HIVER" avec
+   flèche. Sobre, contrasté, très "corporate agricole".
+   DA v2 : fond blanc dominant (comme les flyers), rôles
+   noir/blanc inversés par rapport à la v1 (qui était sombre) ;
+   --ch-black porte maintenant la valeur claire (fond) et
+   --ch-white la valeur sombre (texte/encre) — noms conservés
+   pour ne pas retoucher chaque usage, seules les valeurs
+   ont été interverties.
+   ========================================================= */
+
+:root {
+  --ch-red: #c8102e;
+  --ch-red-deep: #8f0b20;
+  --ch-black: #f7f5f2;
+  --ch-white: #141414;
+  --ch-text: rgba(20,20,20,0.85);
+
+  --ch-font-title: 'Anton', sans-serif;
+  --ch-font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body.ch-body {
+  height: auto;
+  overflow: auto;
+  display: block;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(200,16,46,0.10), transparent 45%),
+    radial-gradient(ellipse at 85% 60%, rgba(200,16,46,0.05), transparent 50%),
+    var(--ch-black);
+  background-attachment: fixed;
+  color: var(--ch-text);
+  font-family: var(--ch-font-body);
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-page * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------------- NAV ---------------- */
+
+.ch-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6vw;
+}
+.ch-back, .ch-contact-link {
+  font-family: var(--ch-font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--ch-white);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.ch-back:hover, .ch-contact-link:hover {
+  color: var(--ch-red);
+  border-color: var(--ch-red);
+}
+.ch-nav-right { display: flex; align-items: center; gap: 18px; }
+.ch-lang-toggle {
+  font-family: var(--ch-font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--ch-white);
+  background: transparent;
+  border: 1.5px solid rgba(20,20,20,0.35);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.ch-lang-toggle:hover, .ch-lang-toggle:focus-visible {
+  color: var(--ch-red);
+  border-color: var(--ch-red);
+  outline: none;
+}
+
+/* ---------------- HERO ---------------- */
+
+.ch-hero {
+  padding: 40px 6vw 50px;
+  text-align: center;
+}
+
+.ch-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--ch-red);
+  margin: 0 0 22px;
+}
+
+/* badge recréé d'après le visuel fourni : pastille noire, liseré
+   rouge, petite flèche pointant vers le haut-droit */
+.ch-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto 28px;
+  padding: 12px 26px;
+  background: var(--ch-black);
+  border: 1.5px solid var(--ch-red);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(200,16,46,0.25);
+}
+.ch-badge-text {
+  font-family: var(--ch-font-title);
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  line-height: 1.05;
+  color: var(--ch-white);
+  text-transform: uppercase;
+  text-align: left;
+}
+.ch-badge-arrow {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--ch-red);
+}
+
+.ch-title {
+  font-family: var(--ch-font-title);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.05;
+  margin: 0 0 22px;
+  color: var(--ch-white);
+  letter-spacing: 0.5px;
+}
+.ch-title span { color: var(--ch-red); }
+
+.ch-lead {
+  max-width: 620px;
+  margin: 0 auto 30px;
+  font-size: 1.05rem;
+  color: rgba(20,20,20,0.85);
+}
+
+.ch-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ch-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ch-white);
+  border: 1px solid rgba(20,20,20,0.3);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.ch-section {
+  padding: 55px 6vw 60px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.ch-section h2 {
+  font-family: var(--ch-font-title);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: var(--ch-white);
+  margin: 0 0 26px;
+  text-align: center;
+}
+/* ---------------- VISUELS (visuel réel de la campagne) ---------------- */
+
+/* la section visuels a besoin de toute la largeur de la "plage"
+   (au-delà du max-width 780px des sections texte) pour que l'image
+   s'affiche en pleine largeur, comme demandé. */
+.ch-section-visuals {
+  max-width: 1400px;
+}
+.ch-visuals-img {
+  display: block;
+  width: 100%;
+  /* l'image source fait 1024px de large : au-delà, elle est
+     agrandie au-delà de sa résolution native et devient pixélisée.
+     max-width la plafonne à sa taille réelle, centrée dans la
+     section. */
+  max-width: 1024px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid rgba(20,20,20,0.12);
+  box-shadow: 0 20px 50px rgba(20,20,20,0.12);
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.ch-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 6vw 40px;
+  font-size: 0.85rem;
+  color: rgba(20,20,20,0.55);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ch-footer a { color: var(--ch-white); text-decoration: none; }
+.ch-footer a:hover { color: var(--ch-red); text-decoration: underline; }
+
+/* ---------------- REVEAL AU SCROLL ---------------- */
+
+.ch-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ch-reveal.ch-visible { opacity: 1; transform: translateY(0); }
+
+/* ---------------- TRANSITION DE SORTIE ---------------- */
+
+.ch-exit-backdrop { position: fixed; inset: 0; background: #000000; z-index: 0; }
+.ch-page {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+}
+.ch-page-exiting { transform: scale(0.06); opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-exit-backdrop { display: none; }
+}

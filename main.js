@@ -44,6 +44,15 @@ function openProject(project, cellEl) {
   if (!hasRealLink) {
     const lang = typeof getLang === "function" ? getLang() : "fr";
     const dict = (typeof PAGE_I18N !== "undefined" && PAGE_I18N[lang]) || {};
+    // projet volontairement désactivé (page prête mais pas encore
+    // publiée) -> message "Prochainement", au lieu du message de dev
+    // générique utilisé quand le lien n'a simplement pas encore été
+    // renseigné dans data.js.
+    if (project.comingSoon) {
+      const comingSoonTemplate = dict.toastComingSoon || '"{title}" — Prochainement';
+      showToast(comingSoonTemplate.replace("{title}", project.title));
+      return;
+    }
     const template = dict.toastMissingLink || 'Ajoute le lien de "{title}" dans data.js';
     showToast(template.replace("{title}", project.title));
     return;
@@ -107,12 +116,62 @@ function renderHeader() {
 //     utilisés pour calculer l'effet de soulèvement continu ---
 let cellCenters = [];
 
+// --- remplit une dalle-projet (miniature ou logo+nom) + ses
+//     interactions ; partagé entre le damier desktop et la colonne
+//     unique mobile/tablette pour ne pas dupliquer la logique. ---
+function fillProjectCell(cell, project) {
+  cell.classList.add("cell-project");
+  cell.tabIndex = 0;
+  cell.setAttribute("role", "button");
+  cell.setAttribute("aria-label", project.title);
+
+  if (project.thumbnail) {
+    // miniature façon YouTube : l'image remplit toute la dalle,
+    // pas d'icône ni de nom séparé par-dessus
+    cell.classList.add("cell-thumbnail");
+    cell.style.backgroundImage = `url("${project.thumbnail}")`;
+    // thumbnailSize/thumbnailBg (optionnels) : pour une image dont
+    // le sujet est petit/carré (ex. un logo photo plutôt qu'une
+    // vraie capture pleine page), "cover" zoome trop et fait
+    // ressortir la pixellisation. On peut alors l'afficher plus
+    // petite et centrée, avec une couleur de fond qui complète la
+    // dalle sur toute sa largeur/hauteur.
+    cell.style.backgroundSize = project.thumbnailSize || "cover";
+    if (project.thumbnailBg) cell.style.backgroundColor = project.thumbnailBg;
+  } else {
+    // visuel représentant la DA du projet (logo fourni, ou sinon
+    // un monogramme de repli avec la 1ère lettre du nom)
+    const visual = document.createElement("div");
+    visual.className = "cell-visual";
+    if (project.logo) {
+      visual.innerHTML = project.logo;
+    } else {
+      const mono = document.createElement("span");
+      mono.className = "cell-monogram";
+      mono.textContent = project.title.charAt(0).toUpperCase();
+      visual.appendChild(mono);
+    }
+    cell.appendChild(visual);
+
+    const name = document.createElement("span");
+    name.className = "cell-name";
+    name.textContent = project.title;
+    cell.appendChild(name);
+  }
+
+  cell.addEventListener("click", () => openProject(project, cell));
+  cell.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openProject(project, cell);
+    }
+  });
+}
+
 // --- construit un damier de dalles rectangulaires, espacées de 5px,
-//     qui remplit exactement l'espace restant sous la ligne ---
-function buildBoard() {
-  const rect = boardWrapperEl.getBoundingClientRect();
-  const availW = rect.width;
-  const availH = rect.height;
+//     qui remplit exactement l'espace restant sous la ligne (mode
+//     desktop, inchangé). ---
+function buildCheckerboard(availW, availH) {
   const isMobile = availW < 640;
   // ratio façon miniature YouTube (16:9), encore agrandi
   const cellW = isMobile ? 220 : 380;
@@ -125,7 +184,6 @@ function buildBoard() {
   // 2 dalles de marge en largeur : avec le décalage en quinconce,
   // il en faut plus pour couvrir toute la largeur sans trou.
   const colsPerRow = Math.max(1, Math.ceil(availW / (cellW + gap)) + 2);
-  const total = rows * colsPerRow;
 
   boardEl.innerHTML = "";
   cellCenters = [];
@@ -169,46 +227,7 @@ function buildBoard() {
       cell.style.height = `${cellH}px`;
 
       const project = positions.get(idx);
-      if (project) {
-        cell.classList.add("cell-project");
-        cell.tabIndex = 0;
-        cell.setAttribute("role", "button");
-        cell.setAttribute("aria-label", project.title);
-
-        if (project.thumbnail) {
-          // miniature façon YouTube : l'image remplit toute la dalle,
-          // pas d'icône ni de nom séparé par-dessus
-          cell.classList.add("cell-thumbnail");
-          cell.style.backgroundImage = `url("${project.thumbnail}")`;
-        } else {
-          // visuel représentant la DA du projet (logo fourni, ou
-          // sinon un monogramme de repli avec la 1ère lettre du nom)
-          const visual = document.createElement("div");
-          visual.className = "cell-visual";
-          if (project.logo) {
-            visual.innerHTML = project.logo;
-          } else {
-            const mono = document.createElement("span");
-            mono.className = "cell-monogram";
-            mono.textContent = project.title.charAt(0).toUpperCase();
-            visual.appendChild(mono);
-          }
-          cell.appendChild(visual);
-
-          const name = document.createElement("span");
-          name.className = "cell-name";
-          name.textContent = project.title;
-          cell.appendChild(name);
-        }
-
-        cell.addEventListener("click", () => openProject(project, cell));
-        cell.addEventListener("keydown", (e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            openProject(project, cell);
-          }
-        });
-      }
+      if (project) fillProjectCell(cell, project);
 
       boardEl.appendChild(cell);
 
@@ -225,6 +244,66 @@ function buildBoard() {
   // rayon du "spot" lumineux autour de la souris : environ une dalle,
   // pour qu'entre deux dalles chacune ne soit éclairée qu'à moitié
   glowRadius = Math.max(cellW, cellH) * 1.15;
+}
+
+// --- mode compact (mobile / tablette, écran < COMPACT_BREAKPOINT) :
+//     plus de damier décoratif ni de dalles hors-projet, juste une
+//     colonne unique avec uniquement les dalles-projets, empilées et
+//     scrollables si elles dépassent la hauteur de l'écran. ---
+function buildSingleColumn(availW) {
+  boardEl.innerHTML = "";
+  cellCenters = [];
+
+  const gap = 16;
+  const cellW = Math.min(420, availW * 0.86);
+  const cellH = Math.round(cellW * (214 / 380));
+  const left = (availW - cellW) / 2;
+
+  PROJECTS.forEach((project, i) => {
+    const top = i * (cellH + gap);
+
+    const cell = document.createElement("div");
+    cell.className = "cell";
+    cell.style.left = `${left}px`;
+    cell.style.top = `${top}px`;
+    cell.style.width = `${cellW}px`;
+    cell.style.height = `${cellH}px`;
+    fillProjectCell(cell, project);
+
+    boardEl.appendChild(cell);
+    cellCenters.push({ el: cell, cx: left + cellW / 2, cy: top + cellH / 2 });
+  });
+
+  // hauteur explicite = somme des dalles, pour que la page devienne
+  // scrollable dès que la colonne dépasse la hauteur de l'écran
+  const totalHeight = PROJECTS.length * (cellH + gap) - gap;
+  boardEl.style.height = `${totalHeight}px`;
+
+  boardDiagonal = Math.hypot(cellW, totalHeight);
+  glowRadius = Math.max(cellW, cellH) * 1.15;
+}
+
+// en dessous de cette largeur (mobile + tablette), le damier
+// décoratif est abandonné au profit d'une colonne unique de dalles-
+// projets uniquement (cf. buildSingleColumn) : plus lisible qu'un
+// damier compressé, et garantit qu'aucune dalle ne peut déborder de
+// l'écran quelle que soit sa largeur.
+const COMPACT_BREAKPOINT = 1024;
+
+function buildBoard() {
+  const rect = boardWrapperEl.getBoundingClientRect();
+  const availW = rect.width;
+  const availH = rect.height;
+  const isCompact = availW < COMPACT_BREAKPOINT;
+
+  document.documentElement.classList.toggle("board-scrollable", isCompact);
+  boardEl.style.height = ""; // reset avant chaque reconstruction
+
+  if (isCompact) {
+    buildSingleColumn(availW);
+  } else {
+    buildCheckerboard(availW, availH);
+  }
 }
 
 /* ---------------------------------------------------------------
@@ -285,11 +364,15 @@ boardWrapperEl.addEventListener("mousemove", onPointerMove);
 boardWrapperEl.addEventListener("mouseleave", resetLift);
 
 // --- recalcule tout au redimensionnement (avec un léger débounce) ---
+// et au changement d'orientation (mobile/tablette), certains
+// navigateurs ne redéclenchant pas resize de façon fiable dans ce cas.
 let resizeTimer = null;
-window.addEventListener("resize", () => {
+function scheduleBuildBoard() {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(buildBoard, 150);
-});
+}
+window.addEventListener("resize", scheduleBuildBoard);
+window.addEventListener("orientationchange", scheduleBuildBoard);
 
 renderHeader();
 buildBoard();

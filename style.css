@@ -11,7 +11,8 @@
 
   --green: #35d489;
   --orange: #ff7a33;
-  --hover-accent: var(--green);
+  --white-accent: #f2f0ef;
+  --hover-accent: var(--white-accent);
 
   --text: #f1f4f1;
 
@@ -310,9 +311,85 @@ body.light-theme .theme-toggle .theme-icon-dark { display: none; }
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 10;
+  /* les dalles survolées montent jusqu'à z-index 50 (effet de
+     soulèvement) : le toast doit rester au-dessus dans tous les cas */
+  z-index: 100;
 }
 .toast.visible {
   opacity: 1;
   transform: translate(-50%, 0);
+}
+
+/* ---------------- RETOUR TACTILE (mobile / tablette) ---------------- */
+/* pas de survol souris sur tactile : un léger effet au clic/tap
+   redonne un retour visuel équivalent au hover desktop. */
+@media (hover: none) {
+  .cell-project:active {
+    border-color: var(--hover-accent);
+    box-shadow: 0 0 12px 2px var(--hover-accent);
+    transform: scale(1.03);
+  }
+}
+
+/* ---------------- RESPONSIVE : TABLETTE ---------------- */
+
+@media (max-width: 1023px) {
+  .theme-toggle, .lang-toggle {
+    width: 40px;
+    height: 40px;
+    top: 16px;
+  }
+  .lang-toggle { left: 16px; min-width: 40px; }
+  .theme-toggle { right: 16px; }
+}
+
+/* ---------------- RESPONSIVE : MOBILE ---------------- */
+
+@media (max-width: 640px) {
+  .theme-toggle, .lang-toggle {
+    width: 36px;
+    height: 36px;
+    top: 12px;
+    font-size: 1rem;
+  }
+  .lang-toggle { left: 12px; min-width: 36px; padding: 0 8px; font-size: 0.75rem; }
+  .theme-toggle { right: 12px; }
+
+  /* le header a besoin d'assez de clearance en haut pour ne jamais
+     chevaucher les boutons fixes, quelle que soit la longueur du nom */
+  .site-header { padding-top: 60px; }
+  .name-block { margin-bottom: 26px; padding: 0 12px; }
+  .name { font-size: clamp(1.25rem, 6.5vw, 1.8rem); letter-spacing: 2px; }
+
+  .toast {
+    max-width: 88vw;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .name { letter-spacing: 1px; }
+}
+
+/* ---------------- MODE COMPACT : colonne unique de dalles-projets ---------------- */
+/* En dessous de COMPACT_BREAKPOINT (main.js), le damier plein écran
+   est remplacé par une colonne verticale de dalles-projets ; la
+   page (normalement bloquée en overflow:hidden pour le damier
+   plein écran) doit alors pouvoir défiler si la colonne dépasse la
+   hauteur de l'écran. */
+html.board-scrollable,
+html.board-scrollable body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+html.board-scrollable .board-wrapper {
+  flex: none;
+  overflow: visible;
+}
+html.board-scrollable .board {
+  margin: 0 auto 40px;
 }

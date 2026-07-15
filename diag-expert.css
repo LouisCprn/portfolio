@@ -1,0 +1,259 @@
+/* =========================================================
+   DIAG'EXPERT - campagne Pièces & Après-vente New Holland
+   DA reprise des visuels fournis : jaune New Holland, noir,
+   touches de bleu marine (bleu de travail du technicien).
+   Ambiance hangar / atelier, sobre et industrielle.
+   En attente des visuels HD définitifs -> zone dédiée en
+   placeholder pour l'instant.
+   ========================================================= */
+
+:root {
+  --dg-yellow: #ffc629;
+  --dg-yellow-deep: #e6a800;
+  --dg-black: #101010;
+  --dg-navy: #1c3350;
+  --dg-white: #f5f4f0;
+  --dg-text: rgba(245,244,240,0.85);
+
+  --dg-font-title: 'Anton', sans-serif;
+  --dg-font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body.dg-body {
+  height: auto;
+  overflow: auto;
+  display: block;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,198,41,0.12), transparent 45%),
+    radial-gradient(ellipse at 85% 60%, rgba(28,51,80,0.35), transparent 55%),
+    var(--dg-black);
+  background-attachment: fixed;
+  color: var(--dg-text);
+  font-family: var(--dg-font-body);
+  line-height: 1.6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dg-page * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------------- NAV ---------------- */
+
+.dg-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 6vw;
+}
+.dg-back, .dg-contact-link {
+  font-family: var(--dg-font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: var(--dg-white);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.dg-back:hover, .dg-contact-link:hover {
+  color: var(--dg-yellow);
+  border-color: var(--dg-yellow);
+}
+.dg-nav-right { display: flex; align-items: center; gap: 18px; }
+.dg-lang-toggle {
+  font-family: var(--dg-font-body);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  color: var(--dg-white);
+  background: transparent;
+  border: 1.5px solid rgba(245,244,240,0.35);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.dg-lang-toggle:hover, .dg-lang-toggle:focus-visible {
+  color: var(--dg-yellow);
+  border-color: var(--dg-yellow);
+  outline: none;
+}
+
+/* ---------------- HERO ---------------- */
+
+.dg-hero {
+  padding: 40px 6vw 50px;
+  text-align: center;
+}
+
+.dg-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--dg-yellow);
+  margin: 0 0 22px;
+}
+
+/* logo recréé d'après le visuel fourni : "DIAG" + une petite
+   loupe bleue qui remplace le O + "EXPERT" en dessous */
+.dg-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 0 auto 30px;
+}
+.dg-logo-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dg-logo-word {
+  font-family: var(--dg-font-title);
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 2.4rem;
+  color: var(--dg-white);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.dg-logo-glass {
+  width: 30px;
+  height: 30px;
+  color: var(--dg-navy);
+  background: var(--dg-white);
+  border-radius: 50%;
+  padding: 4px;
+}
+.dg-logo-sub {
+  font-family: var(--dg-font-title);
+  font-weight: 400;
+  letter-spacing: 4px;
+  font-size: 1.1rem;
+  color: var(--dg-white);
+  text-transform: uppercase;
+}
+
+.dg-title {
+  font-family: var(--dg-font-title);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  line-height: 1.1;
+  margin: 0 0 22px;
+  color: var(--dg-white);
+  letter-spacing: 0.5px;
+}
+.dg-title span { color: var(--dg-yellow); }
+
+.dg-lead {
+  max-width: 620px;
+  margin: 0 auto 30px;
+  font-size: 1.05rem;
+  color: rgba(245,244,240,0.85);
+}
+
+.dg-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.dg-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--dg-white);
+  border: 1px solid rgba(245,244,240,0.3);
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+/* ---------------- SECTIONS ---------------- */
+
+.dg-section {
+  padding: 55px 6vw 60px;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.dg-section h2 {
+  font-family: var(--dg-font-title);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: var(--dg-white);
+  margin: 0 0 26px;
+  text-align: center;
+}
+.dg-concept {
+  font-size: 1.05rem;
+  color: rgba(245,244,240,0.85);
+  text-align: center;
+}
+
+/* ---------------- VISUELS (placeholder en attendant les HD) ---------------- */
+
+.dg-visuals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+.dg-visual-placeholder {
+  aspect-ratio: 3 / 4;
+  border: 1.5px dashed rgba(255,198,41,0.4);
+  border-radius: 10px;
+  background: rgba(255,198,41,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+.dg-visual-placeholder span {
+  font-size: 0.8rem;
+  color: rgba(245,244,240,0.5);
+}
+
+/* ---------------- FOOTER ---------------- */
+
+.dg-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 6vw 40px;
+  font-size: 0.85rem;
+  color: rgba(245,244,240,0.55);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.dg-footer a { color: var(--dg-white); text-decoration: none; }
+.dg-footer a:hover { color: var(--dg-yellow); text-decoration: underline; }
+
+/* ---------------- REVEAL AU SCROLL ---------------- */
+
+.dg-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.dg-reveal.dg-visible { opacity: 1; transform: translateY(0); }
+
+/* ---------------- TRANSITION DE SORTIE ---------------- */
+
+.dg-exit-backdrop { position: fixed; inset: 0; background: #000000; z-index: 0; }
+.dg-page {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+}
+.dg-page-exiting { transform: scale(0.06); opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dg-exit-backdrop { display: none; }
+}

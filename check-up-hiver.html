@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="pageTitle">Check Up Hiver — Campagne Pièces Case IH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="check-up-hiver.css">
+</head>
+<body class="ch-body">
+
+  <div class="ch-page">
+
+    <header class="ch-nav">
+      <a class="ch-back" href="index.html" data-i18n="navBack">&larr; Portfolio</a>
+      <div class="ch-nav-right">
+        <button class="lang-toggle ch-lang-toggle" id="lang-toggle" type="button" aria-label="Changer de langue">EN</button>
+        <a class="ch-contact-link" href="contact.html" data-i18n="navContact">Contact</a>
+      </div>
+    </header>
+
+    <section class="ch-hero">
+      <p class="ch-eyebrow" data-i18n="heroEyebrow">Campagne Après-vente &middot; Pièces d'origine &middot; Case IH</p>
+
+      <h1 class="ch-title" data-i18n="heroTitle">Faites l'expérience<br>d'un <span>check up à 360°</span></h1>
+      <p class="ch-lead" data-i18n="heroLead">Une campagne Pièces &amp; Après-vente Case IH pour inciter les exploitants à réviser leur matériel avant l'hiver&nbsp;: contrôle complet, pièces d'origine Genuine Parts et offre de financement pour anticiper sereinement la prochaine saison.</p>
+
+      <div class="ch-tags">
+        <span class="ch-tag" data-i18n="tag1">Genuine Parts</span>
+        <span class="ch-tag" data-i18n="tag2">Lubrifiants Akcela</span>
+        <span class="ch-tag" data-i18n="tag3">Offre financement</span>
+      </div>
+    </section>
+
+    <section class="ch-section ch-section-visuals">
+      <h2 data-i18n="visualsHeading">Visuels de la campagne</h2>
+      <img class="ch-visuals-img" src="images/check-up-hiver-visuels.webp" alt="Supports de communication Check Up Hiver — Case IH" data-i18n-attr="alt:visualsAlt" loading="lazy">
+    </section>
+
+    <footer class="ch-footer">
+      <a href="index.html" data-i18n="footerBack">&larr; Retour au portfolio</a>
+      <span data-i18n="footerCredit">Check Up Hiver &times; Case IH &mdash; en collaboration avec l'agence À la Une</span>
+    </footer>
+
+  </div>
+
+  <script>
+    const PAGE_I18N = {
+      fr: {
+        pageTitle: "Check Up Hiver — Campagne Pièces Case IH",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "Campagne Après-vente &middot; Pièces d'origine &middot; Case IH",
+        heroTitle: "Faites l'expérience<br>d'un <span>check up à 360°</span>",
+        heroLead: "Une campagne Pièces &amp; Après-vente Case IH pour inciter les exploitants à réviser leur matériel avant l'hiver&nbsp;: contrôle complet, pièces d'origine Genuine Parts et offre de financement pour anticiper sereinement la prochaine saison.",
+        tag1: "Genuine Parts",
+        tag2: "Lubrifiants Akcela",
+        tag3: "Offre financement",
+        visualsHeading: "Visuels de la campagne",
+        visualsAlt: "Supports de communication Check Up Hiver — Case IH",
+        footerBack: "&larr; Retour au portfolio",
+        footerCredit: "Check Up Hiver &times; Case IH &mdash; en collaboration avec l'agence À la Une"
+      },
+      en: {
+        pageTitle: "Check Up Hiver — Case IH Parts Campaign",
+        navBack: "&larr; Portfolio",
+        navContact: "Contact",
+        heroEyebrow: "Aftersales Campaign &middot; Genuine Parts &middot; Case IH",
+        heroTitle: "Experience<br>a <span>360° check-up</span>",
+        heroLead: "A Case IH Parts &amp; Aftersales campaign encouraging farmers to service their equipment before winter&nbsp;: a full inspection, Genuine Parts, and a financing offer to prepare for next season with peace of mind.",
+        tag1: "Genuine Parts",
+        tag2: "Akcela Lubricants",
+        tag3: "Financing offer",
+        visualsHeading: "Campaign visuals",
+        visualsAlt: "Check Up Hiver communication materials — Case IH",
+        footerBack: "&larr; Back to portfolio",
+        footerCredit: "Check Up Hiver &times; Case IH &mdash; in collaboration with agency À la Une"
+      }
+    };
+  </script>
+  <script src="i18n.js"></script>
+  <script src="check-up-hiver.js"></script>
+</body>
+</html>
