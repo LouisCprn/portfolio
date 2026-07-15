@@ -54,8 +54,8 @@ const PROJECTS = [
     thumbnail: "images/Miniature Tu Connais.png"
   },
   {
-    title: "Check Up Hiver",
-    link: "check-up-hiver.html",
+    title: "Case IH",
+    link: "case-ih.html",
     accent: "#c8102e",
     /* logo officiel Case IH (fond sombre déjà inclus dans l'image,
        recadré serré) : affiché large et centré, sans effet de zoom
@@ -65,7 +65,7 @@ const PROJECTS = [
   },
   {
     title: "New Holland",
-    link: "#", // page désactivée pour le moment (repasser à "diag-expert.html" pour la réactiver)
+    link: "#", // page désactivée pour le moment (repasser à "new-holland.html" pour la réactiver)
     comingSoon: true, // affiche "Prochainement" au clic plutôt que le message de dev générique
     accent: "#ffc629",
     /* logo officiel New Holland (fond sombre déjà inclus dans
